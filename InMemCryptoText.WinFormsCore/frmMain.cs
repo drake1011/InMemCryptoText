@@ -27,7 +27,18 @@ namespace InMemCryptoText.WinFormsCore
             {
                 if (!string.IsNullOrEmpty(txtPassword.Text))
                 {
-                    txtDecryptedText.Text = Cryptography.Decrypt(File.ReadAllText(txtEncryptedFileLocation.Text), txtPassword.Text); ;
+                    try
+                    {
+                        txtDecryptedText.Text = Cryptography.Decrypt(File.ReadAllText(txtEncryptedFileLocation.Text), txtPassword.Text);
+                    }
+                    catch (InvalidPasswordException ipex)
+                    {
+                        MessageBox.Show($"{ipex.Message}", "Invalid Password Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"{ex.Message}", "Unknown Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
