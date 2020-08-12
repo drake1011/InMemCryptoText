@@ -7,9 +7,19 @@ namespace InMemCryptoText.WinFormsCore
 {
     public partial class frmMain : Form
     {
+        private frmStyleConfig frmStyle;
         public frmMain()
         {
             InitializeComponent();
+            frmStyle = new frmStyleConfig();
+            ReLoadStyleConfigSettings();
+        }
+
+        private void ReLoadStyleConfigSettings()
+        {
+            txtDecryptedText.Font = Settings.Default.SavedFont;
+            txtDecryptedText.ForeColor = Settings.Default.SavedForeColor;
+            txtDecryptedText.BackColor = Settings.Default.SavedBackColor;
         }
 
         private void btnSelectDecryptFile_Click(object sender, EventArgs e)
@@ -106,6 +116,12 @@ namespace InMemCryptoText.WinFormsCore
             txtSaveNewEncryptedFile.Text = string.Empty;
             txtEncryptPassword.Text = string.Empty;
             txtDecryptedText.Text = string.Empty;
+        }
+
+        private void tsmiStyleConfig_Click(object sender, System.EventArgs e)
+        {
+            frmStyle.ShowDialog();
+            ReLoadStyleConfigSettings();
         }
     }
 }

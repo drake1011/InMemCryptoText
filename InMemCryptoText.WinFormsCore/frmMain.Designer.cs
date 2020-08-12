@@ -46,6 +46,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.msiFile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.msiSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiStyleConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -86,6 +88,7 @@
             // txtDecryptedText
             // 
             this.txtDecryptedText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDecryptedText.Font = new System.Drawing.Font("Droid Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDecryptedText.Location = new System.Drawing.Point(0, 0);
             this.txtDecryptedText.Multiline = true;
             this.txtDecryptedText.Name = "txtDecryptedText";
@@ -223,7 +226,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.msiFile});
+            this.msiFile,
+            this.msiSettings});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1468, 24);
@@ -244,6 +248,21 @@
             this.tsmiClear.Size = new System.Drawing.Size(101, 22);
             this.tsmiClear.Text = "Clear";
             this.tsmiClear.Click += new System.EventHandler(this.tsmiClear_Click);
+            // 
+            // msiSettings
+            // 
+            this.msiSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiStyleConfig});
+            this.msiSettings.Name = "msiSettings";
+            this.msiSettings.Size = new System.Drawing.Size(61, 20);
+            this.msiSettings.Text = "Settings";
+            // 
+            // tsmiStyleConfig
+            // 
+            this.tsmiStyleConfig.Name = "tsmiStyleConfig";
+            this.tsmiStyleConfig.Size = new System.Drawing.Size(170, 22);
+            this.tsmiStyleConfig.Text = "Style Configurator";
+            this.tsmiStyleConfig.Click += new System.EventHandler(this.tsmiStyleConfig_Click);
             // 
             // frmMain
             // 
@@ -291,6 +310,8 @@
         private System.Windows.Forms.TextBox txtEncryptPassword;
         private System.Windows.Forms.Label lblEncrypt;
         private System.Windows.Forms.Button btnSelectEncryptFile;
+        private System.Windows.Forms.ToolStripMenuItem msiSettings;
+        private System.Windows.Forms.ToolStripMenuItem tsmiStyleConfig;
     }
 }
 
