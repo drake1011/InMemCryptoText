@@ -60,17 +60,18 @@ namespace InMemCryptoText.WinFormsCore
                         if (diagResult != DialogResult.OK)
                         {
                             MessageBox.Show("Select Save Encrypt File First!", "Missing File Save Location", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            
+
                         }
                         else if (diagResult == DialogResult.OK)
                         {
                             txtSaveNewEncryptedFile.Text = saveFileDialog1.FileName;
-                            if (!string.IsNullOrEmpty(txtSaveNewEncryptedFile.Text))
-                            {
-                                File.WriteAllText(txtSaveNewEncryptedFile.Text, Cryptography.Encrypt(txtDecryptedText.Text, txtEncryptPassword.Text));
-                                MessageBox.Show($"Text encrypted and saved Successfully\nto {txtSaveNewEncryptedFile.Text}!", "Success");
-                            }
                         }
+                    }
+
+                    if (!string.IsNullOrEmpty(txtSaveNewEncryptedFile.Text))
+                    {
+                        File.WriteAllText(txtSaveNewEncryptedFile.Text, Cryptography.Encrypt(txtDecryptedText.Text, txtEncryptPassword.Text));
+                        MessageBox.Show($"Text encrypted and saved Successfully\nto {txtSaveNewEncryptedFile.Text}!", "Success");
                     }
                 }
             }
