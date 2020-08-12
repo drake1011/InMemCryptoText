@@ -95,5 +95,17 @@ namespace InMemCryptoText.WinFormsCore
                 txtSaveNewEncryptedFile.Text = saveFileDialog1.FileName;
             }
         }
+
+        private void tsmiClear_Click(object sender, System.EventArgs e)
+        {
+            openFileDialog1.FileName = string.Empty;
+            saveFileDialog1.FileName = string.Empty;
+
+            txtEncryptedFileLocation.Text = string.Empty;
+            txtPassword.Text = string.Empty;
+            txtSaveNewEncryptedFile.Text = string.Empty;
+            txtEncryptPassword.Text = string.Empty;
+            txtDecryptedText.Text = string.Empty;
+        }
     }
 }

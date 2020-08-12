@@ -243,6 +243,7 @@
             this.tsmiClear.Name = "tsmiClear";
             this.tsmiClear.Size = new System.Drawing.Size(101, 22);
             this.tsmiClear.Text = "Clear";
+            this.tsmiClear.Click += new System.EventHandler(this.tsmiClear_Click);
             // 
             // frmMain
             // 
@@ -281,7 +282,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem msiFile;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem tsmiClear;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label lblEncryptFile;
