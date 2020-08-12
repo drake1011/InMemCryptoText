@@ -95,6 +95,7 @@ namespace CryptoLib
 
             byte[] decrypted;
             int decryptedByteCount = 0;
+            string returnString = string.Empty;
 
             using (T cipher = new T())
             {
@@ -116,17 +117,21 @@ namespace CryptoLib
                             }
                         }
                     }
+                    returnString = Encoding.UTF8.GetString(decrypted, 0, decryptedByteCount); 
                 }
-                catch (Exception ex)
+                catch(CryptographicException cex)
                 {
-                    // TODO proper exception handling
-                    // TODO when password is bad, instead of returning empty string - throw an exception?
-                    return string.Empty;
+                    if (cex.Message == "Padding is invalid and cannot be removed.")
+                        throw new InvalidPasswordException("Cannot decrypt file, bad Password?", cex);
+                }
+                catch (Exception)
+                {
+                    throw;
                 }
 
                 cipher.Clear();
             }
-            return Encoding.UTF8.GetString(decrypted, 0, decryptedByteCount);
+            return returnString;
         }
     }
 }
