@@ -116,7 +116,9 @@
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(553, 79);
+            this.txtPassword.MaxLength = 50;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(348, 23);
             this.txtPassword.TabIndex = 2;
             // 
@@ -194,7 +196,9 @@
             // txtEncryptPassword
             // 
             this.txtEncryptPassword.Location = new System.Drawing.Point(553, 168);
+            this.txtEncryptPassword.MaxLength = 50;
             this.txtEncryptPassword.Name = "txtEncryptPassword";
+            this.txtEncryptPassword.PasswordChar = '•';
             this.txtEncryptPassword.Size = new System.Drawing.Size(348, 23);
             this.txtEncryptPassword.TabIndex = 2;
             // 

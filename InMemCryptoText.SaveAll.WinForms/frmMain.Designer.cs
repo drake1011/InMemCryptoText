@@ -90,7 +90,9 @@
             // 
             this.txtDecryptPassword.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDecryptPassword.Location = new System.Drawing.Point(139, 79);
+            this.txtDecryptPassword.MaxLength = 50;
             this.txtDecryptPassword.Name = "txtDecryptPassword";
+            this.txtDecryptPassword.PasswordChar = '•';
             this.txtDecryptPassword.Size = new System.Drawing.Size(200, 23);
             this.txtDecryptPassword.TabIndex = 4;
             // 
@@ -121,7 +123,9 @@
             // 
             this.txtEncryptPassword.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEncryptPassword.Location = new System.Drawing.Point(139, 194);
+            this.txtEncryptPassword.MaxLength = 50;
             this.txtEncryptPassword.Name = "txtEncryptPassword";
+            this.txtEncryptPassword.PasswordChar = '•';
             this.txtEncryptPassword.Size = new System.Drawing.Size(200, 23);
             this.txtEncryptPassword.TabIndex = 10;
             // 
