@@ -68,6 +68,7 @@ namespace InMemCryptoText.WinFormsCore
                             if (!string.IsNullOrEmpty(txtSaveNewEncryptedFile.Text))
                             {
                                 File.WriteAllText(txtSaveNewEncryptedFile.Text, Cryptography.Encrypt(txtDecryptedText.Text, txtEncryptPassword.Text));
+                                MessageBox.Show($"Text encrypted and saved Successfully\nto {txtSaveNewEncryptedFile.Text}!", "Success");
                             }
                         }
                     }
