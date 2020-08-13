@@ -122,7 +122,7 @@ namespace CryptoLib
                 catch(CryptographicException cex)
                 {
                     if (cex.Message == "Padding is invalid and cannot be removed.")
-                        throw new InvalidPasswordException("Cannot decrypt file, bad Password?", cex);
+                        throw new InvalidPasswordException("Cannot decrypt value, bad Password?", cex);
                 }
                 catch (Exception)
                 {
