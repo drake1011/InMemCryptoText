@@ -3,13 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="SavedFont" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)">Microsoft Sans Serif, 9pt</Value>
+      <Value Profile="(Default)">Segoe UI, 12pt, style=Bold</Value>
     </Setting>
     <Setting Name="SavedForeColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">Black</Value>
+      <Value Profile="(Default)">Menu</Value>
     </Setting>
     <Setting Name="SavedBackColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">White</Value>
+      <Value Profile="(Default)">WindowFrame</Value>
     </Setting>
   </Settings>
 </SettingsFile>

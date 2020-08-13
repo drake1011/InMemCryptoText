@@ -25,7 +25,7 @@ namespace InMemCryptoText.WinFormsCore {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 9pt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Segoe UI, 12pt, style=Bold")]
         public global::System.Drawing.Font SavedFont {
             get {
                 return ((global::System.Drawing.Font)(this["SavedFont"]));
@@ -37,7 +37,7 @@ namespace InMemCryptoText.WinFormsCore {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Menu")]
         public global::System.Drawing.Color SavedForeColor {
             get {
                 return ((global::System.Drawing.Color)(this["SavedForeColor"]));
@@ -49,7 +49,7 @@ namespace InMemCryptoText.WinFormsCore {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        [global::System.Configuration.DefaultSettingValueAttribute("WindowFrame")]
         public global::System.Drawing.Color SavedBackColor {
             get {
                 return ((global::System.Drawing.Color)(this["SavedBackColor"]));
