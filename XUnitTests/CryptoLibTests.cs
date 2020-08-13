@@ -44,8 +44,7 @@ namespace XUnitTests
         public void Cryptography_aes_encrypt_and_decrypt_bad_pass_Fail()
         {
             var resultString = Cryptography.Encrypt("my secret", "myPass");
-            var decriptedResultString = Cryptography.Decrypt(resultString, "myPassBogus");
-            Assert.NotEqual("my secret", decriptedResultString);
+            Assert.Throws<InvalidPasswordException>(() => Cryptography.Decrypt(resultString, "myPassBogus"));
         }
 
         [Theory]
@@ -56,8 +55,7 @@ namespace XUnitTests
         {
             var resultString = Cryptography.Encrypt(value, password);
             var bogusPw = password + "BOGUS";
-            var decriptedResultString = Cryptography.Decrypt(resultString, bogusPw);
-            Assert.NotEqual(value, decriptedResultString);
+            Assert.Throws<InvalidPasswordException>(() => Cryptography.Decrypt(resultString, bogusPw));
         }
 
         #endregion
