@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace InMemCryptoText.WinFormsCore
@@ -13,38 +8,58 @@ namespace InMemCryptoText.WinFormsCore
         public frmStyleConfig()
         {
             InitializeComponent();
+            ReloadFontFields();
+            ReloadFontColor();
+        }
 
-            txtFont.Text = Settings.Default.SavedFont.Name;
-            
+        private void ReloadFontFields()
+        {
+            txtFontName.Text = Settings.Default.SavedFont.Name;
+            txtFontSize.Text = Settings.Default.SavedFont.Size.ToString();
+            chkFontBold.Checked = Settings.Default.SavedFont.Bold;
+            chkFontItalic.Checked = Settings.Default.SavedFont.Italic;
+            chkFontUnderline.Checked = Settings.Default.SavedFont.Underline;
+        }
+
+        private void ReloadFontColor()
+        {
             pbForeColor.BackColor = Settings.Default.SavedForeColor;
-            colorDialogForeColor.Color = Settings.Default.SavedForeColor;
-
             pbBackColor.BackColor = Settings.Default.SavedBackColor;
-            colorDialogBackColor.Color = Settings.Default.SavedBackColor;
         }
 
         private void btnOpenFontDialog_Click(object sender, EventArgs e)
         {
             fontDialog.ShowDialog();
-            txtFont.Text = fontDialog.Font.Name;
             Settings.Default.SavedFont = fontDialog.Font;
-            Settings.Default.Save();
+            ReloadFontFields();
         }
 
         private void btnOpenColorDialogForeColor_Click(object sender, EventArgs e)
         {
             colorDialogForeColor.ShowDialog();
-            pbForeColor.BackColor = colorDialogForeColor.Color;
             Settings.Default.SavedForeColor = colorDialogForeColor.Color;
-            Settings.Default.Save();
+            ReloadFontColor();
         }
 
         private void btnOpenColorDialogBackColor_Click(object sender, EventArgs e)
         {
             colorDialogBackColor.ShowDialog();
-            pbBackColor.BackColor = colorDialogBackColor.Color;
             Settings.Default.SavedBackColor = colorDialogBackColor.Color;
+            ReloadFontColor();
+        }
+
+        private void btnSaveAndClose_Click(object sender, EventArgs e)
+        {
             Settings.Default.Save();
+            Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Settings.Default.Reload();
+            ReloadFontFields();
+            ReloadFontColor();
+            Close();
         }
     }
 }
