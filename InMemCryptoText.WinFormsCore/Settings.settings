@@ -9,7 +9,7 @@
       <Value Profile="(Default)">Menu</Value>
     </Setting>
     <Setting Name="SavedBackColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">WindowFrame</Value>
+      <Value Profile="(Default)">64, 64, 64</Value>
     </Setting>
   </Settings>
 </SettingsFile>

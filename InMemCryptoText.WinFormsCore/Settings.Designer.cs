@@ -49,7 +49,7 @@ namespace InMemCryptoText.WinFormsCore {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("WindowFrame")]
+        [global::System.Configuration.DefaultSettingValueAttribute("64, 64, 64")]
         public global::System.Drawing.Color SavedBackColor {
             get {
                 return ((global::System.Drawing.Color)(this["SavedBackColor"]));
