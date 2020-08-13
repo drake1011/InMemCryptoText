@@ -24,10 +24,10 @@ namespace InMemCryptoText.WinFormsCore
 
         private void btnSelectDecryptFile_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialogEnc.ShowDialog() == DialogResult.OK)
             {
-                txtEncryptedFileLocation.Text = openFileDialog1.FileName;
-                txtSaveNewEncryptedFile.Text = openFileDialog1.FileName;
+                txtEncryptedFileLocation.Text = openFileDialogEnc.FileName;
+                txtSaveNewEncryptedFile.Text = openFileDialogEnc.FileName;
             }
         }
 
@@ -77,7 +77,7 @@ namespace InMemCryptoText.WinFormsCore
                 {
                     if (string.IsNullOrEmpty(txtSaveNewEncryptedFile.Text))
                     {
-                        var diagResult = saveFileDialog1.ShowDialog();
+                        var diagResult = saveFileDialog.ShowDialog();
                         if (diagResult != DialogResult.OK)
                         {
                             MessageBox.Show("Select Save Encrypt File First!", "Missing File Save Location", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -85,7 +85,7 @@ namespace InMemCryptoText.WinFormsCore
                         }
                         else if (diagResult == DialogResult.OK)
                         {
-                            txtSaveNewEncryptedFile.Text = saveFileDialog1.FileName;
+                            txtSaveNewEncryptedFile.Text = saveFileDialog.FileName;
                         }
                     }
 
@@ -100,16 +100,16 @@ namespace InMemCryptoText.WinFormsCore
 
         private void btnSelectEncryptFile_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                txtSaveNewEncryptedFile.Text = saveFileDialog1.FileName;
+                txtSaveNewEncryptedFile.Text = saveFileDialog.FileName;
             }
         }
 
         private void tsmiClear_Click(object sender, System.EventArgs e)
         {
-            openFileDialog1.FileName = string.Empty;
-            saveFileDialog1.FileName = string.Empty;
+            openFileDialogEnc.FileName = string.Empty;
+            saveFileDialog.FileName = string.Empty;
 
             txtEncryptedFileLocation.Text = string.Empty;
             txtPassword.Text = string.Empty;

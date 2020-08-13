@@ -76,6 +76,14 @@
             this.txtEncryptedFileLocation.Size = new System.Drawing.Size(308, 23);
             this.txtEncryptedFileLocation.TabIndex = 2;
             // 
+            // openFileDialogEnc
+            // 
+            this.openFileDialogEnc.Filter = "Crypto Encrypted files|*.cenc|All files|*.*";
+            // 
+            // saveFileDialogEnc
+            // 
+            this.saveFileDialogEnc.Filter = "Crypto Encrypted files|*.cenc|All files|*.*";
+            // 
             // lblDecryptPassword
             // 
             this.lblDecryptPassword.AutoSize = true;
@@ -168,6 +176,14 @@
             this.lblEncrypt.Size = new System.Drawing.Size(47, 15);
             this.lblEncrypt.TabIndex = 6;
             this.lblEncrypt.Text = "Encrypt";
+            // 
+            // openFileDialogTxt
+            // 
+            this.openFileDialogTxt.Filter = "Normal text files|*.txt|All files|*.*";
+            // 
+            // saveFileDialogTxt
+            // 
+            this.saveFileDialogTxt.Filter = "Normal text files|*.txt|All files|*.*";
             // 
             // frmMain
             // 

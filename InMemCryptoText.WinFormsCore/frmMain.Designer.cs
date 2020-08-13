@@ -48,8 +48,8 @@
             this.tsmiClear = new System.Windows.Forms.ToolStripMenuItem();
             this.msiSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiStyleConfig = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialogEnc = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -264,6 +264,14 @@
             this.tsmiStyleConfig.Text = "Style Configurator";
             this.tsmiStyleConfig.Click += new System.EventHandler(this.tsmiStyleConfig_Click);
             // 
+            // openFileDialogEnc
+            // 
+            this.openFileDialogEnc.Filter = "Crypto Encrypted files|*.cenc|All files|*.*";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "Crypto Encrypted files|*.cenc|All files|*.*";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -302,10 +310,10 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem msiFile;
         private System.Windows.Forms.ToolStripMenuItem tsmiClear;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialogEnc;
         private System.Windows.Forms.Label lblEncryptFile;
         private System.Windows.Forms.TextBox txtSaveNewEncryptedFile;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.Label lblEncryptPassword;
         private System.Windows.Forms.TextBox txtEncryptPassword;
         private System.Windows.Forms.Label lblEncrypt;
