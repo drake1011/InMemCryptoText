@@ -37,6 +37,10 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnEncrypt = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrevious = new System.Windows.Forms.Button();
+            this.lblFind = new System.Windows.Forms.Label();
+            this.txtFind = new System.Windows.Forms.TextBox();
             this.btnSelectEncryptFile = new System.Windows.Forms.Button();
             this.lblEncrypt = new System.Windows.Forms.Label();
             this.lblEncryptPassword = new System.Windows.Forms.Label();
@@ -50,6 +54,7 @@
             this.tsmiStyleConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialogEnc = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.lblResultsFound = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -145,6 +150,11 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lblResultsFound);
+            this.splitContainer1.Panel1.Controls.Add(this.btnNext);
+            this.splitContainer1.Panel1.Controls.Add(this.btnPrevious);
+            this.splitContainer1.Panel1.Controls.Add(this.lblFind);
+            this.splitContainer1.Panel1.Controls.Add(this.txtFind);
             this.splitContainer1.Panel1.Controls.Add(this.btnSelectEncryptFile);
             this.splitContainer1.Panel1.Controls.Add(this.lblEncrypt);
             this.splitContainer1.Panel1.Controls.Add(this.lblEncryptPassword);
@@ -167,6 +177,43 @@
             this.splitContainer1.SplitterDistance = 200;
             this.splitContainer1.TabIndex = 4;
             this.splitContainer1.Text = "splitContainer1";
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(275, 172);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(32, 23);
+            this.btnNext.TabIndex = 9;
+            this.btnNext.Text = "N";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnPrevious
+            // 
+            this.btnPrevious.Location = new System.Drawing.Point(237, 172);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(32, 23);
+            this.btnPrevious.TabIndex = 5;
+            this.btnPrevious.Text = "P";
+            this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
+            // 
+            // lblFind
+            // 
+            this.lblFind.AutoSize = true;
+            this.lblFind.Location = new System.Drawing.Point(62, 177);
+            this.lblFind.Name = "lblFind";
+            this.lblFind.Size = new System.Drawing.Size(30, 15);
+            this.lblFind.TabIndex = 8;
+            this.lblFind.Text = "Find";
+            // 
+            // txtFind
+            // 
+            this.txtFind.Location = new System.Drawing.Point(98, 172);
+            this.txtFind.Name = "txtFind";
+            this.txtFind.Size = new System.Drawing.Size(133, 23);
+            this.txtFind.TabIndex = 7;
+            this.txtFind.TextChanged += new System.EventHandler(this.txtFind_TextChanged);
             // 
             // btnSelectEncryptFile
             // 
@@ -272,6 +319,14 @@
             // 
             this.saveFileDialog.Filter = "Crypto Encrypted files|*.cenc|All files|*.*";
             // 
+            // lblResultsFound
+            // 
+            this.lblResultsFound.AutoSize = true;
+            this.lblResultsFound.Location = new System.Drawing.Point(313, 178);
+            this.lblResultsFound.Name = "lblResultsFound";
+            this.lblResultsFound.Size = new System.Drawing.Size(0, 15);
+            this.lblResultsFound.TabIndex = 10;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -320,6 +375,11 @@
         private System.Windows.Forms.Button btnSelectEncryptFile;
         private System.Windows.Forms.ToolStripMenuItem msiSettings;
         private System.Windows.Forms.ToolStripMenuItem tsmiStyleConfig;
+        private System.Windows.Forms.TextBox txtFind;
+        private System.Windows.Forms.Label lblFind;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPrevious;
+        private System.Windows.Forms.Label lblResultsFound;
     }
 }
 

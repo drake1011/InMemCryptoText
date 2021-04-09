@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CryptoLib;
 
@@ -9,6 +11,7 @@ namespace InMemCryptoText.WinFormsCore
     {
         private readonly frmStyleConfig _frmStyle;
         private readonly ICryptography _crypto;
+        private string _decryptedText;
 
         public frmMain(ICryptography crypto, frmStyleConfig frmStyle)
         {
@@ -43,7 +46,7 @@ namespace InMemCryptoText.WinFormsCore
                 {
                     try
                     {
-                        txtDecryptedText.Text = await _crypto.Decrypt(File.ReadAllText(txtEncryptedFileLocation.Text), txtPassword.Text);
+                        txtDecryptedText.Text = _decryptedText = await _crypto.Decrypt(File.ReadAllText(txtEncryptedFileLocation.Text), txtPassword.Text);
                     }
                     catch (InvalidPasswordException ipex)
                     {
@@ -126,6 +129,55 @@ namespace InMemCryptoText.WinFormsCore
         {
             _frmStyle.ShowDialog();
             ReLoadStyleConfigSettings();
+        }
+
+        private int matches_index;
+        private MatchCollection matches;
+
+        private void txtFind_TextChanged(object sender, EventArgs e)
+        {
+            if (txtDecryptedText.Text.Length > 0)
+            {
+                matches = Regex.Matches(txtDecryptedText.Text, txtFind.Text);
+                if (matches.Count > 0)
+                {
+                    var index = matches.First().Index;//txtDecryptedText.Text.IndexOf(txtFind.Text);
+                    matches_index = 0;
+
+                    MoveSelection(index, 1);
+                }
+                else
+                    lblResultsFound.Text = $"Match 0/0";
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (matches?.Count > 0)
+            {
+                // moove forward in array
+                var index = (matches_index + 1) % matches.Count;
+                MoveSelection(matches.ElementAt(index).Index, index + 1);
+                matches_index = index;
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (matches?.Count > 0)
+            {
+                // move backward in array
+                var index = ((matches_index - 1) + matches.Count) % matches.Count;
+                MoveSelection(matches.ElementAt(index).Index, index + 1);
+                matches_index = index;
+            }
+        }
+
+        private void MoveSelection(int index, int resultNumber)
+        {
+            lblResultsFound.Text = $"Match {resultNumber}/{matches.Count}";
+            txtDecryptedText.Select(index, txtFind.Text.Length);
+            txtDecryptedText.ScrollToCaret();
         }
     }
 }
