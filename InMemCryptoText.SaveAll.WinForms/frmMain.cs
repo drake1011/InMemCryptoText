@@ -7,6 +7,8 @@ namespace InMemCryptoText.SaveAll.WinForms
 {
     public partial class frmMain : Form
     {
+        private readonly ICryptography _cryptography;
+
         public frmMain()
         {
             InitializeComponent();
@@ -47,7 +49,7 @@ namespace InMemCryptoText.SaveAll.WinForms
                     {
                         try
                         {
-                            decryptedText = Cryptography.Decrypt(File.ReadAllText(txtEncryptedFileLocation.Text), txtDecryptPassword.Text);
+                            decryptedText = _cryptography.Decrypt(File.ReadAllText(txtEncryptedFileLocation.Text), txtDecryptPassword.Text);
                         }
                         catch (InvalidPasswordException ipex)
                         {
@@ -93,7 +95,7 @@ namespace InMemCryptoText.SaveAll.WinForms
                 }
                 else
                 {
-                    var encryptedText = Cryptography.Encrypt(File.ReadAllText(txtTextFileLocation.Text), txtEncryptPassword.Text);
+                    var encryptedText = _cryptography.Encrypt(File.ReadAllText(txtTextFileLocation.Text), txtEncryptPassword.Text);
 
                     var diagResult = saveFileDialogEnc.ShowDialog();
                     if (diagResult != DialogResult.OK)
