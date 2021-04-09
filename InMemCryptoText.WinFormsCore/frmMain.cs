@@ -7,12 +7,16 @@ namespace InMemCryptoText.WinFormsCore
 {
     public partial class frmMain : Form
     {
-        private frmStyleConfig frmStyle;
-        public frmMain()
+        private readonly frmStyleConfig _frmStyle;
+        private readonly ICryptography _crypto;
+
+        public frmMain(ICryptography crypto, frmStyleConfig frmStyle)
         {
             InitializeComponent();
-            frmStyle = new frmStyleConfig();
+            _frmStyle = frmStyle;
             ReLoadStyleConfigSettings();
+
+            _crypto = crypto;
         }
 
         private void ReLoadStyleConfigSettings()
@@ -39,7 +43,7 @@ namespace InMemCryptoText.WinFormsCore
                 {
                     try
                     {
-                        txtDecryptedText.Text = Cryptography.Decrypt(File.ReadAllText(txtEncryptedFileLocation.Text), txtPassword.Text);
+                        txtDecryptedText.Text = _crypto.Decrypt(File.ReadAllText(txtEncryptedFileLocation.Text), txtPassword.Text);
                     }
                     catch (InvalidPasswordException ipex)
                     {
@@ -91,7 +95,7 @@ namespace InMemCryptoText.WinFormsCore
 
                     if (!string.IsNullOrEmpty(txtSaveNewEncryptedFile.Text))
                     {
-                        File.WriteAllText(txtSaveNewEncryptedFile.Text, Cryptography.Encrypt(txtDecryptedText.Text, txtEncryptPassword.Text));
+                        File.WriteAllText(txtSaveNewEncryptedFile.Text, _crypto.Encrypt(txtDecryptedText.Text, txtEncryptPassword.Text));
                         MessageBox.Show($"Text encrypted and saved Successfully\nto {txtSaveNewEncryptedFile.Text}!", "Success");
                     }
                 }
@@ -120,7 +124,7 @@ namespace InMemCryptoText.WinFormsCore
 
         private void tsmiStyleConfig_Click(object sender, System.EventArgs e)
         {
-            frmStyle.ShowDialog();
+            _frmStyle.ShowDialog();
             ReLoadStyleConfigSettings();
         }
     }
