@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Threading.Tasks;
 
 namespace CryptoLib
 {
     public interface ICryptography
     {
-        string Encrypt(string value, string password);
+        Task<string> Encrypt(string value, string password);
 
-        string Decrypt(string value, string password);
+        Task<string> Decrypt(string value, string password);
     }
 }

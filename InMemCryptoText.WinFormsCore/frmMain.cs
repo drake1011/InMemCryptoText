@@ -35,7 +35,7 @@ namespace InMemCryptoText.WinFormsCore
             }
         }
 
-        private void btnDecrypt_Click(object sender, EventArgs e)
+        private async void btnDecrypt_Click(object sender, EventArgs e)
         {
             if(!string.IsNullOrEmpty(txtEncryptedFileLocation.Text))
             {
@@ -43,7 +43,7 @@ namespace InMemCryptoText.WinFormsCore
                 {
                     try
                     {
-                        txtDecryptedText.Text = _crypto.Decrypt(File.ReadAllText(txtEncryptedFileLocation.Text), txtPassword.Text);
+                        txtDecryptedText.Text = await _crypto.Decrypt(File.ReadAllText(txtEncryptedFileLocation.Text), txtPassword.Text);
                     }
                     catch (InvalidPasswordException ipex)
                     {
@@ -65,7 +65,7 @@ namespace InMemCryptoText.WinFormsCore
             }
         }
 
-        private void btnEncrypt_Click(object sender, EventArgs e)
+        private async void btnEncrypt_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtDecryptedText.Text))
             {
@@ -95,7 +95,7 @@ namespace InMemCryptoText.WinFormsCore
 
                     if (!string.IsNullOrEmpty(txtSaveNewEncryptedFile.Text))
                     {
-                        File.WriteAllText(txtSaveNewEncryptedFile.Text, _crypto.Encrypt(txtDecryptedText.Text, txtEncryptPassword.Text));
+                        File.WriteAllText(txtSaveNewEncryptedFile.Text, await _crypto.Encrypt(txtDecryptedText.Text, txtEncryptPassword.Text));
                         MessageBox.Show($"Text encrypted and saved Successfully\nto {txtSaveNewEncryptedFile.Text}!", "Success");
                     }
                 }

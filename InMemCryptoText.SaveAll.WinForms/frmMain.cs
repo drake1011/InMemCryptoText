@@ -30,7 +30,7 @@ namespace InMemCryptoText.SaveAll.WinForms
             }
         }
 
-        private void btnDecrypt_Click(object sender, EventArgs e)
+        private async void btnDecrypt_Click(object sender, EventArgs e)
         {
             var decryptedText = string.Empty;
             do // used to break on exceptions
@@ -49,7 +49,7 @@ namespace InMemCryptoText.SaveAll.WinForms
                     {
                         try
                         {
-                            decryptedText = _cryptography.Decrypt(File.ReadAllText(txtEncryptedFileLocation.Text), txtDecryptPassword.Text);
+                            decryptedText = await _cryptography.Decrypt(File.ReadAllText(txtEncryptedFileLocation.Text), txtDecryptPassword.Text);
                         }
                         catch (InvalidPasswordException ipex)
                         {
@@ -81,7 +81,7 @@ namespace InMemCryptoText.SaveAll.WinForms
             } while (1 == 0);
         }
 
-        private void btnEncrypt_Click(object sender, EventArgs e)
+        private async void btnEncrypt_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtEncryptPassword.Text))
             {
@@ -95,7 +95,7 @@ namespace InMemCryptoText.SaveAll.WinForms
                 }
                 else
                 {
-                    var encryptedText = _cryptography.Encrypt(File.ReadAllText(txtTextFileLocation.Text), txtEncryptPassword.Text);
+                    var encryptedText = await _cryptography.Encrypt(File.ReadAllText(txtTextFileLocation.Text), txtEncryptPassword.Text);
 
                     var diagResult = saveFileDialogEnc.ShowDialog();
                     if (diagResult != DialogResult.OK)

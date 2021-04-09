@@ -2,6 +2,7 @@
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CryptoLib
 {
@@ -30,7 +31,7 @@ namespace CryptoLib
         /// <param name="value">value to encrypt</param>
         /// <param name="password">password to use for encryption and decription</param>
         /// <returns>Encrypted data as string</returns>
-        public string Encrypt<T>(string value, string password) where T : SymmetricAlgorithm, new()
+        public async Task<string> Encrypt<T>(string value, string password) where T : SymmetricAlgorithm, new()
         {
             byte[] vectorBytes = ASCIIEncoding.ASCII.GetBytes(_vector);
             byte[] saltBytes = ASCIIEncoding.ASCII.GetBytes(_salt);
@@ -50,7 +51,7 @@ namespace CryptoLib
                     {
                         using (var cryptoStream = new CryptoStream(memStream, encryptor, CryptoStreamMode.Write))
                         {
-                            cryptoStream.Write(valueBytes, 0, valueBytes.Length);
+                            await cryptoStream.WriteAsync(valueBytes, 0, valueBytes.Length);
                             cryptoStream.FlushFinalBlock();
                             encrypted = memStream.ToArray();
                         }
@@ -68,7 +69,7 @@ namespace CryptoLib
         /// <param name="value">value to encrypt</param>
         /// <param name="password">password to use for encryption and decription</param>
         /// <returns>Decrypted plain text as string</returns>
-        public string Decrypt<T>(string value, string password) where T : SymmetricAlgorithm, new()
+        public async Task<string> Decrypt<T>(string value, string password) where T : SymmetricAlgorithm, new()
         {
             byte[] vectorBytes = Encoding.ASCII.GetBytes(_vector);
             byte[] saltBytes = Encoding.ASCII.GetBytes(_salt);
@@ -93,8 +94,8 @@ namespace CryptoLib
                         {
                             using (var cryptoStream = new CryptoStream(memStream, decryptor, CryptoStreamMode.Read))
                             {
-                                decrypted = new byte[valueBytes.Length];
-                                decryptedByteCount = cryptoStream.Read(decrypted, 0, decrypted.Length);
+                                    decrypted = new byte[valueBytes.Length];
+                                    decryptedByteCount = await cryptoStream.ReadAsync(decrypted, 0, decrypted.Length);
                             }
                         }
                     }

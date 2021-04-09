@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography;
+using System.Threading.Tasks;
 
 namespace CryptoLib
 {
@@ -17,9 +18,9 @@ namespace CryptoLib
         /// <param name="value">value to encrypt</param>
         /// <param name="password">password to use for encryption and decription</param>
         /// <returns>Encrypted data as string</returns>
-        public string Encrypt(string value, string password)
+        public async Task<string> Encrypt(string value, string password)
         {
-            return _crypto.Encrypt<AesManaged>(value, password);
+            return await _crypto.Encrypt<AesManaged>(value, password);
         }
 
         /// <summary>
@@ -28,9 +29,9 @@ namespace CryptoLib
         /// <param name="value">value to encrypt</param>
         /// <param name="password">password to use for encryption and decription</param>
         /// <returns>Decrypted plain text as string</returns>
-        public string Decrypt(string value, string password)
+        public async Task<string> Decrypt(string value, string password)
         {
-            return _crypto.Decrypt<AesManaged>(value, password);
+            return await _crypto.Decrypt<AesManaged>(value, password);
         }
     }
 }
